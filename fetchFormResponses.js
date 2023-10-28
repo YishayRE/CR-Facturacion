@@ -26,8 +26,6 @@ async function accessSpreadsheet() {
     spreadsheetId,
     range: `${sheetName}!A1:G100`, //Ajustar rango de celdas segun lo requerido
   });
-
-  console.log(response.data.values);
 }
 
 accessSpreadsheet();
