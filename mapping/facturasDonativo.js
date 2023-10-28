@@ -11,15 +11,18 @@ const facturasDonativo = async(facturas, donaciones) => {
                     descripcion: donacion.causa?.nombre,
                     importe: donacion.monto,
                     usoCFDI: factura[4].trim().split(" ")[0],
-                    nombre: `${donacion.colaborador?.nombre} ${donacion.colaborador?.primerApellido} ${donacion.colaborador?.nombresegundoApellido}`,
+                    nombre: "MIGUEL YISHAY RODRIGUEZ ENRIQUEZ",
                     rfc: factura[2].trim(),
                     domicilioFiscalReceptor: factura[5].trim(),
-                    regimenFiscalReceptor: factura[3].trim().split(" ")[0],
-                    email: donacion.colaborador?.email,
+                    regimenFiscalReceptor: "605",
+                    email: "yishel.miguel@gmail.com"
                 }
+                //email: donacion.colaborador?.email,
+                //regimenFiscalReceptor: factura[3].trim().split(" ")[0],
+                //nombre: `${donacion.colaborador?.nombre.toUpperCase()} ${donacion.colaborador?.primerApellido.toUpperCase()} ${donacion.colaborador?.segundoApellido.toUpperCase()}`,
         });
         
-        return facturaDonativo;
+        return facturaDonativo.filter(factura => factura !== null);
     } catch (error) {
         throw new Error(error);
     }

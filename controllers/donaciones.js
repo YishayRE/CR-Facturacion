@@ -3,6 +3,7 @@ import { response, request } from "express";
 import { cr } from "../services/index.js";
 import * as mapping from "../mapping/index.js";
 import * as services from "../services/index.js";
+import * as functions from "../functions/index.js";
 
 const obtenerdonacion = async (req = request, resp = response) => {
   try {
@@ -28,7 +29,11 @@ const obtenerdonacion = async (req = request, resp = response) => {
     const facturasDonativo = await mapping.facturasDonativo.facturasDonativo(facturas, donaciones);
     console.log("8");
 
-    return resp.status(200).json(facturasDonativo);
+    console.log("9");
+    const facturasJSON = await functions.facturaObjs.facturaObjs(facturasDonativo);
+    console.log("10");
+
+    return resp.status(200).json(facturasJSON);
   } catch (error) {
     console.error(error);
 
