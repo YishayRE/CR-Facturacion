@@ -7,8 +7,6 @@ import * as generators from "../generators/index.js";
 
 const obtenerdonacion = async (req = request, resp = response) => {
   try {
-    const body = req.body;
-
     console.log("1");
     const login = await services.cr.login.login("FAYALA", "FA2020");
     console.log("2");
@@ -22,15 +20,13 @@ const obtenerdonacion = async (req = request, resp = response) => {
     const donaciones = await mapping.donacionesLimpias.donacionesLimpias(fechaInicio, fechaFin, offset, max, login.access_token, []);
     console.log("4");
     
-    /*
     console.log("5");
     const facturas = await services.google.forms();
     console.log("6");
     facturas.shift();
-    */
 
     console.log("7");
-    const facturasDonativo = await mapping.facturasDonativo.facturasDonativo(body.donaciones, donaciones);
+    const facturasDonativo = await mapping.facturasDonativo.facturasDonativo(facturas, donaciones);
     console.log("8");
 
     console.log("9");

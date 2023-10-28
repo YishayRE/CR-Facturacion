@@ -9,6 +9,6 @@ const router = Router();
  */
 
 // Obtener los tokens - privado/Admin
-router.get('/donacion/', donaciones.obtenerdonacion);
+router.post('/donacion/', donaciones.obtenerdonacion);
 
 export { router };
